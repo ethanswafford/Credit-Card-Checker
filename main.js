@@ -27,6 +27,14 @@ const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, inval
 // of Introduction to JavaScript (through Learn JavaScript: Loops).
 
 
+// Look over the starter code. There are 15 arrays that each contain the digits of separate credit card numbers. 
+// They all have prefixes to reflect their status, i.e.variables that start with valid contain a valid number, 
+// whereas invalid do not, and mystery variables can be either.There is also a batch array that stores all of 
+// the provided credit cards in a single array.
+// You’ ll use these arrays later to check
+// if your functions are working properly.
+
+
 
 
 
