@@ -56,3 +56,30 @@ const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, inval
 
 
 // Add your functions below:
+
+function validateCred(num) {
+    let sum = [];
+    let i = 0;
+    let openObj1 = JSON.parse(JSON.stringify(num));
+    let openObj2 = [];
+    for (i = 0; i < openObj1.length; i++) {
+        let j = 0;
+        let v = openObj1[i].length - 2;
+        do {
+            openObj1[i][v] = openObj1[i][v] * 2;
+            if (openObj1[i][v] > 9) {
+                openObj1[i][v] = openObj1[i][v] - 9;
+            }
+            v--;
+            v--;
+            j++;
+
+            while (j < openObj1[i].length - 1);
+            openObj2.push(openObj1[i].reduce((pre, curr) => pre + curr, 0));
+        }
+        for (let z = 0; z < openObj2.length; z++) {
+            sum.push(openObj2[z] % 10);
+        }
+        return sum;
+    }
+}
