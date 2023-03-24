@@ -20,7 +20,8 @@ const mystery4 = [4, 9, 2, 9, 8, 7, 7, 1, 6, 9, 2, 1, 7, 0, 9, 3]
 const mystery5 = [4, 9, 1, 3, 5, 4, 0, 4, 6, 3, 0, 7, 2, 5, 2, 3]
 
 // An array of all the arrays above
-const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, invalid3, invalid4, invalid5, mystery1, mystery2, mystery3, mystery4, mystery5]
+const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, invalid3, invalid4, invalid5, 
+    mystery1, mystery2, mystery3, mystery4, mystery5]
 
 
 // In order to complete this project, you should have completed the first few sections 
@@ -57,29 +58,24 @@ const batch = [valid1, valid2, valid3, valid4, valid5, invalid1, invalid2, inval
 
 // Add your functions below:
 
-function validateCred(num) {
-    let sum = [];
-    let i = 0;
-    let openObj1 = JSON.parse(JSON.stringify(num));
-    let openObj2 = [];
-    for (i = 0; i < openObj1.length; i++) {
-        let j = 0;
-        let v = openObj1[i].length - 2;
-        do {
-            openObj1[i][v] = openObj1[i][v] * 2;
-            if (openObj1[i][v] > 9) {
-                openObj1[i][v] = openObj1[i][v] - 9;
-            }
-            v--;
-            v--;
-            j++;
+function validateCred(cardNumber) {
+    // create a copy of the input array to avoid mutations
+    const cardDigits = [...cardNumber];
 
-            while (j < openObj1[i].length - 1);
-            openObj2.push(openObj1[i].reduce((pre, curr) => pre + curr, 0));
+    // iterate over the card digits from right to left
+    for (let i = cardDigits.length - 1; i >= 0; i -= 2) {
+        // double every other digit (starting from second-to-last digit)
+        cardDigits[i] *= 2;
+
+        // if the resulting digit is greater than 9, subtract 9 from its value
+        if (cardDigits[i] > 9) {
+            cardDigits[i] -= 9;
         }
-        for (let z = 0; z < openObj2.length; z++) {
-            sum.push(openObj2[z] % 10);
-        }
-        return sum;
     }
+
+    // sum up all the digits in the card number 
+    const sum = cardDigits.reduce((acc, digit) => acc + digit, 0);
+
+// if the sum modulo 10 is 0, the card number is valid, otherwise its invalid
+ return sum % 10 === 0; 
 }
