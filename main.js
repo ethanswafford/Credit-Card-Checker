@@ -97,3 +97,43 @@ function findInvalidCards(batch) {
     // return the array of invalid credit cards
     return invalidCards;
 }
+
+function idInvalidCardCompanies(invalidCards) {
+
+    // initialize an array to hold the names of the invalid card companies
+    const invalidCardCompanies = [];
+
+    // iterate over each invalid card number in the nested array
+    for (let i = 0; i < invalidCards.length; i++) {
+        const cardNumber = invalidCards[i];
+
+        // check the first digit of the card number and add the corresponding company name to the invalidCardCompanies array
+        switch (cardNumber[0]) {
+            case 3:
+                if (!invalidCardCompanies.includes('Amex')) {
+                    invalidCardCompanies.push('Amex');
+                }
+                break;
+            case 4:
+                if (!invalidCardCompanies.includes('Visa')) {
+                    invalidCardCompanies.push('Visa');
+                }
+                break;
+            case 5:
+                if (!invalidCardCompanies.includes('Mastercard')) {
+                    invalidCardCompanies.push('Mastercard');
+                }
+                break;
+            case 6:
+                if (!invalidCardCompanies.includes('Discover')) {
+                    invalidCardCompanies.push('Discover');
+                }
+                break;
+            default:
+                console.log('Company not found.');
+                break;
+        }
+    }
+    // return the array of invalid card companies 
+    return invalidCardCompanies;
+}
