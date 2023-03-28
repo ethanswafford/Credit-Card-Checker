@@ -79,3 +79,21 @@ function validateCred(cardNumber) {
 // if the sum modulo 10 is 0, the card number is valid, otherwise its invalid
  return sum % 10 === 0; 
 }
+
+function findInvalidCards(batch) {
+    // initialize an array to hold the invalid cards 
+    const invalidCards = [];
+
+    // iterate over each card in the batch 
+    for (let i = o; i < batch.length; i++) {
+        const cardNumber = batch[i];
+
+        // if the card number is invalid, add it to the invalid credit cards array
+        if (!validateCred(cardNumber)) {
+            invalidCards.push(cardNumber);
+        }
+    }
+
+    // return the array of invalid credit cards
+    return invalidCards;
+}
